@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/:lang?', function(req, res, next) {
   let lang =req.params.lang;
   if(! (lang && lang.match(/$(ru|en)^/)))
-    res.redirect("ru")
+    res.redirect("/gosa2023/ru")
   res.render('index', { lang });
 });
 
