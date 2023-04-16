@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/:lang?', function(req, res, next) {
+router.get('/', function(req, res, next) {
   let lang =req.params.lang;
   //if(! (lang && lang.match(/$(ru|en)^/)))
     lang="ru"
