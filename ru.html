@@ -24,14 +24,18 @@
             overflow: hidden;
         }
     </style>
+    <link href="videojs.css" rel="stylesheet" />
 </head>
 <body>
 <div class="videoWrapper">
-    <video class="video" playsinline width="1200" height="720" controls>
+    <video id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause" playsinline width="1200" height="720" controls>
 
     </video>
 </div>
-
+<script src="video.min.js"></script>
+<script>
+    videojs('my-player');
+</script>
 </body>
 
 </html>
