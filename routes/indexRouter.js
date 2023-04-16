@@ -4,8 +4,8 @@ var router = express.Router();
 /* GET home page. */
 router.get('/:lang?', function(req, res, next) {
   let lang =req.params.lang;
-  if(! (lang && lang.match(/$(ru|en)^/)))
-    res.redirect("ru")
+  //if(! (lang && lang.match(/$(ru|en)^/)))
+    lang="ru"
   res.render('index', { lang });
 });
 
