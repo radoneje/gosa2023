@@ -14,6 +14,10 @@ router.get('/control', function(req, res, next) {
 
   res.render('control', );
 });
+router.get('/info', function(req, res, next) {
+
+  res.render('info', );
+});
 router.get('/state', function(req, res, next) {
 
   let state=require("./../public/gosa2023/state.json")
