@@ -56,7 +56,7 @@ html(lang="ru")
         link( href="/gosa2023/video-js.css" rel="stylesheet")
         script(src="/gosa2023/video.min.js")
     body
-        .videoWrapper(muted="true")
+        .videoWrapper(muted="false")
             video( id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause" playsinline width="1200" height="720" controls muted loop autoplay)
             .muteWr()
                 include 172512_mute_icon.svg
@@ -66,6 +66,9 @@ html(lang="ru")
             let wr=document.querySelector(".videoWrapper")
             wr.onclick=(e)=>{e.preventDefault();e.stopPropagation();player.muted(false)}
             player.on('volumechange', (e) => {
+                wr.setAttribute("muted", player.muted());
+            });
+            player.on('play', (e) => {
                 wr.setAttribute("muted", player.muted());
             });
             player.on("pause", ()=>{player.muted(false)})
