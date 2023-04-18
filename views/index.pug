@@ -111,6 +111,7 @@ html(lang="ru")
                 e.stopPropagation();
                 lang = lang == "ru" ? "en" : "ru";
                 updateState(true);
+                document.querySelector(".lang").innerHTML=(lang == "ru" ? "ENG" : "RUS");
             }
 
             wr.onclick = (e) => {
