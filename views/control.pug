@@ -9,12 +9,48 @@ html(lang="ru")
       .container
 
           h4 Управление
-          .controlBody.mt-3
+          .controlBody.mt-3#app
 
+            .btnRow(v-for="item in items")
+                .btn.mt-2(v-on:click="setState(item)" v-bind:class="{'btn-secondary':item.id!=state, 'btn-warning':item.id==state}") {{item.id}}
+            .mt-3
+                iframe(src="/gosa2023/player/ru" width="480" height="270")
+            .mt-3
+                iframe(src="/gosa2023/player/en" width="480" height="270")
+      script.
+          let app=new Vue({
+              el:"#app",
+              data:{
+                  state:"",
+                  items:[]
+              },
+              methods:{
+                  setState:async function(item){
+                      this.items.forEach(async (e)=>{
+                          if(e.id==item.id){
+                              let res= await fetch("/gosa2023/setState/"+e.id)
+                              if(res.ok)
+                                this.state=(await res.json()).state;
+                          }
+                      })
+                  },
+                  updateState:async function (){
+                      let res= await fetch("/gosa2023/state")
+                      if(res.ok)
+                          this.state=(await res.json()).state;
+                  }
+              },
+              mounted:async function(){
+                  let res= await fetch("/gosa2023/state")
+                  if(res.ok)
+                  {
+                      let r=await res.json();
+                      this.state=r.state;
+                      this.items=r.items;
+                  }
 
-            .btn.btn-secondary.mt-2 Прерол
+              }
+          })
 
-            .btn.btn-secondary.mt-2 CDN-video
-            .btn.btn-secondary.mt-2 ngenix
 
 

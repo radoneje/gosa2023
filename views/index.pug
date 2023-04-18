@@ -1,33 +1,99 @@
 <!DOCTYPE html>
 html(lang="ru")
-  head
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      style.
-           body{
-               width: 100%;
-               padding: 0;
-               margin:0;
-               overflow: hidden;
-           }
-           .videoWrapper {
-               position: relative;
-               padding-bottom: 56.25%; /* 16:9 */
-               height: 0;
-               overflow: hidden;
-           }
-           .videoWrapper .video {
-               position: absolute;
-               top: 0;
-               left: 0;
-               width: 100%;
-               height: 100%;
-               overflow: hidden;
-           }
-  body
-    .videoWrapper
-      video( id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause" playsinline width="1200" height="720" controls)
+    head
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        style.
+            body {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
 
-    script(src="video.min.js")
-    script.
-      let player=videojs('video');
+            .videoWrapper {
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 */
+                height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: opacity 1s ease;
+            }
+
+            .videoWrapper .video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+            .muteWr{
+
+                position: absolute;
+                left: calc(50% - 40px);
+                top: calc(50% - 32px);
+                width: 80px;
+                height: 64px;
+                cursor: pointer;
+                padding: 8px 16px;
+                box-sizing: border-box;
+                background-color: rgba(43, 51, 63, 0.3);
+                border: 0.06666em solid #fff;
+                border-radius: 0.3em;
+                transition: all 0.4s;
+                display: none;
+            }
+            .videoWrapper[muted="true"] .muteWr{
+                display: block;
+            }
+            .muteWr:hover {
+                background-color: rgba(43, 51, 63, 0.7);
+            }
+            .muteWr svg {
+                width: 100%;
+                height: auto;
+            }
+        link( href="/gosa2023/video-js.css" rel="stylesheet")
+        script(src="/gosa2023/video.min.js")
+    body
+        .videoWrapper(muted="true")
+            video( id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause" playsinline width="1200" height="720" controls muted autoplay)
+            .muteWr()
+                include 172512_mute_icon.svg
+        script let lang = !{JSON.stringify(lang)}
+        script.
+            let player = videojs('video');
+            let wr=document.querySelector(".videoWrapper")
+            wr.onclick=(e)=>{e.preventDefault();e.stopPropagation();player.muted(false)}
+            player.on('volumechange', (e) => {
+                wr.setAttribute("muted", player.muted());
+            });
+            let state = null
+            updateState()
+            async function updateState() {
+                try {
+                    let res = await fetch("/gosa2023/state")
+                    if (res.ok) {
+                        let dt = await res.json()
+                        if (state != dt.state) {
+                            state = dt.state
+                            dt.items.forEach(item => {
+                                if (item.id == state) {
+                                    player.src(item.src.replace("{lang}", lang), "application/vnd.apple.mpegurl");
+                                    let poster = item.poster.replace("{lang}", lang);
+                                    player.poster_ = item.poster.replace("{lang}", lang);
+                                    setTimeout(() => {
+                                        wr.style.opacity = 1;
+                                    }, 200)
+
+                                }
+                            })
+                        }
+                    }
+                }catch (e){
+                    console.warn(e)
+                }
+                setTimeout(updateState,1000)
+            }
+
 
