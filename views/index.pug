@@ -120,7 +120,7 @@ html(lang="ru")
                 player.muted(false)
             }
             updateState();
-            setTimeout(updateState, 60 * 1000)
+            setInterval(updateState, 60 * 1000)
 
             async function updateState(force) {
                 try {
