@@ -57,7 +57,7 @@ html(lang="ru")
         script(src="/gosa2023/video.min.js")
     body
         .videoWrapper(muted="true")
-            video( id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause" playsinline width="1200" height="720" controls muted  autoplay)
+            video( id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause" playsinline width="1200" height="720" controls muted loop autoplay)
             .muteWr()
                 include 172512_mute_icon.svg
         script let lang = !{JSON.stringify(lang)}
