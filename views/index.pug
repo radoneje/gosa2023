@@ -67,7 +67,8 @@ html(lang="ru")
                 opacity: 0.3;
             }
             .langWr:hover{
-                opacity: 0.1;
+                opacity: 1;
+                font-family: sans-serif;
             }
         link( href="/gosa2023/video-js.css" rel="stylesheet")
         script(src="/gosa2023/video.min.js")
@@ -83,6 +84,12 @@ html(lang="ru")
                     .lang ENG
         script let lang = !{JSON.stringify(lang)}
         script.
+            let state = null;
+            document.querySelector(".langWr").onclick=()=>{
+                lang =lang=="ru"?"en":"ru";
+                updateState(true);
+            }
+
             let player = videojs('video');
             let wr=document.querySelector(".videoWrapper")
             wr.onclick=(e)=>{e.preventDefault();e.stopPropagation();player.muted(false)}
@@ -93,14 +100,16 @@ html(lang="ru")
                 wr.setAttribute("muted", player.muted());
             });
             player.on("pause", ()=>{player.muted(false)})
-            let state = null
-            updateState()
-            async function updateState() {
+
+            updateState();
+            setTimeout(updateState, 60 * 1000)
+
+            async function updateState(force) {
                 try {
                     let res = await fetch("/gosa2023/state")
                     if (res.ok) {
                         let dt = await res.json()
-                        if (state != dt.state) {
+                        if (state != dt.state || force) {
                             state = dt.state
                             dt.items.forEach(item => {
                                 if (item.id == state) {
@@ -118,7 +127,7 @@ html(lang="ru")
                 }catch (e){
                     console.warn(e)
                 }
-                setTimeout(updateState,20*1000)
+
             }
 
 
