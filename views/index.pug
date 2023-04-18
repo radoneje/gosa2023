@@ -27,7 +27,8 @@ html(lang="ru")
                 height: 100%;
                 overflow: hidden;
             }
-            .muteWr{
+
+            .muteWr {
 
                 position: absolute;
                 left: calc(50% - 40px);
@@ -43,19 +44,23 @@ html(lang="ru")
                 transition: all 0.4s;
                 display: none;
             }
-            .videoWrapper[muted="true"] .muteWr{
+
+            .videoWrapper[muted="true"] .muteWr {
                 display: block;
             }
+
             .muteWr:hover {
                 background-color: rgba(43, 51, 63, 0.7);
             }
+
             .muteWr svg {
                 width: 100%;
                 height: auto;
             }
-            .langWr{
+
+            .langWr {
                 position: absolute;
-                top:4px;
+                top: 4px;
                 right: 4px;
                 background-color: rgba(43, 51, 63, 0.7);
                 color: white;
@@ -65,10 +70,12 @@ html(lang="ru")
                 font-size: 10px;
                 cursor: pointer;
                 opacity: 0.3;
-            }
-            .langWr:hover{
-                opacity: 1;
                 font-family: sans-serif;
+            }
+
+            .langWr:hover {
+                opacity: 1;
+
             }
         link( href="/gosa2023/video-js.css" rel="stylesheet")
         script(src="/gosa2023/video.min.js")
@@ -78,29 +85,39 @@ html(lang="ru")
             .muteWr()
                 include 172512_mute_icon.svg
             .langWr
-                if lang=="en"
+                if lang == "en"
                     .lang RUS
                 else
                     .lang ENG
         script let lang = !{JSON.stringify(lang)}
         script.
-            let state = null;
-            document.querySelector(".langWr").onclick=()=>{
-                lang =lang=="ru"?"en":"ru";
-                updateState(true);
-            }
 
+
+            let state = null;
             let player = videojs('video');
-            let wr=document.querySelector(".videoWrapper")
-            wr.onclick=(e)=>{e.preventDefault();e.stopPropagation();player.muted(false)}
+            let wr = document.querySelector(".videoWrapper")
+
             player.on('volumechange', (e) => {
                 wr.setAttribute("muted", player.muted());
             });
             player.on('play', (e) => {
                 wr.setAttribute("muted", player.muted());
             });
-            player.on("pause", ()=>{player.muted(false)})
+            player.on("pause", () => {
+                player.muted(false)
+            })
+            document.querySelector(".langWr").onclick = (e) => {
+                e.preventDefault()
+                e.stopPropagation();
+                lang = lang == "ru" ? "en" : "ru";
+                updateState(true);
+            }
 
+            wr.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                player.muted(false)
+            }
             updateState();
             setTimeout(updateState, 60 * 1000)
 
@@ -124,7 +141,7 @@ html(lang="ru")
                             })
                         }
                     }
-                }catch (e){
+                } catch (e) {
                     console.warn(e)
                 }
 
