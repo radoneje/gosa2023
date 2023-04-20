@@ -102,7 +102,8 @@ html(lang="ru")
                 return check;
             };
             if(mobileAndTabletCheck()){
-                alert(1)
+                //alert(1)
+                document.querySelector("video").setAttribute("controls","contorls")
             }
             let state = null;
             let player = videojs('video');
