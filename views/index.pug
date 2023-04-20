@@ -103,8 +103,10 @@ html(lang="ru")
                     player.muted(true);
                     player.play();
                     wr.setAttribute("muted", player.muted());
+                    console.log("canplay first")
                 }
-                consolw.log("canplay")
+                else
+                console.log("canplay")
             })
             player.on('volumechange', (e) => {
                 wr.setAttribute("muted", player.muted());
