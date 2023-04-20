@@ -101,11 +101,14 @@ html(lang="ru")
                 })(navigator.userAgent || navigator.vendor || window.opera);
                 return check;
             };
+            let video = document.querySelector("video");
+            video.setAttribute("poster", "/gosa2023/" + lang + "/poster.png")
             if(mobileAndTabletCheck()){
                 //alert(1)
-                let video=document.querySelector("video");
+
+
                     video.setAttribute("controls","contorls")
-                video.setAttribute("poster", "/gosa2023/"+lang+"/poster.png")
+
                 document.querySelector(".muteWr").style.display="none"
 
             }
