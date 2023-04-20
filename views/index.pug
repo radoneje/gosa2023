@@ -102,7 +102,7 @@ html(lang="ru")
             let fires=true
             player.on("canplay",()=>{
                 if(fires){
-                    fires=true;
+                    fires=false;
                     player.muted(true);
                     player.play();
 
