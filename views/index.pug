@@ -105,7 +105,7 @@ html(lang="ru")
                     fires=true;
                     player.muted(true);
                     player.play();
-                    player.controls(true);
+
                     wr.setAttribute("muted", player.muted());
                     console.log("canplay first")
                 }
@@ -132,7 +132,8 @@ html(lang="ru")
             wr.onclick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                player.muted(false)
+                player.muted(false);
+                player.controls(true);
             }
             updateState();
             setInterval(updateState, 60 * 1000)
