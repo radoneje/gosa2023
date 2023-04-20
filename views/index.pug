@@ -147,9 +147,9 @@ html(lang="ru")
                             state = dt.state
                             dt.items.forEach(item => {
                                 if (item.id == state) {
-                                    player.src(item.src.replace("{lang}", lang), "application/vnd.apple.mpegurl");
-                                    let poster = item.poster.replace("{lang}", lang);
-                                    player.poster_ = item.poster.replace("{lang}", lang);
+                                    player.src(item[lang].src, "application/vnd.apple.mpegurl");
+                                    let poster = item[lang].poster;
+                                    player.poster_ = item[lang].poster;
                                     setTimeout(() => {
                                         wr.style.opacity = 1;
                                     }, 200)
