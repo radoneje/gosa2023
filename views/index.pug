@@ -121,6 +121,18 @@ html(lang="ru")
                 else
                 console.log("canplay")
             })
+            player.on("ready", () => {
+                if (fires) {
+                    fires = false;
+                    player.muted(true);
+                    player.play();
+
+                    wr.setAttribute("muted", player.muted());
+                    console.log("canplay first")
+                } else
+                    console.log("canplay")
+            })
+
             player.on('volumechange', (e) => {
                 wr.setAttribute("muted", player.muted());
             });
