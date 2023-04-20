@@ -103,8 +103,11 @@ html(lang="ru")
             };
             if(mobileAndTabletCheck()){
                 //alert(1)
-                document.querySelector("video").setAttribute("controls","contorls")
+                let video=document.querySelector("video");
+                    video.setAttribute("controls","contorls")
+                video.setAttribute("poster", "/gosa2023/"+lang+"/poster.png")
                 document.querySelector(".muteWr").style.display="none"
+
             }
             let state = null;
             let player = videojs('video');
