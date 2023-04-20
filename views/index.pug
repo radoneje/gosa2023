@@ -103,45 +103,36 @@ html(lang="ru")
             };
             if(mobileAndTabletCheck()){
                 //alert(1)
-                //document.querySelector("video").setAttribute("controls","contorls")
+                document.querySelector("video").setAttribute("controls","contorls")
             }
             let state = null;
             let player = videojs('video');
             let wr = document.querySelector(".videoWrapper")
             let fires=true
-            player.on("canplay",()=>{
-                if(fires){
-                    fires=false;
-                    player.muted(true);
-                    player.play();
+            if(!mobileAndTabletCheck()) {
+                player.on("canplay", () => {
+                    if (fires) {
+                        fires = false;
+                        player.muted(true);
+                        player.play();
 
+                        wr.setAttribute("muted", player.muted());
+                        console.log("canplay first")
+                    } else
+                        console.log("canplay")
+                })
+
+
+                player.on('volumechange', (e) => {
                     wr.setAttribute("muted", player.muted());
-                    console.log("canplay first")
-                }
-                else
-                console.log("canplay")
-            })
-            player.on("ready", () => {
-                if (fires) {
-                   // fires = false;
-                    player.muted(true);
-                    //player.play();
-
-                    //wr.setAttribute("muted", player.muted());
-                    //console.log("canplay first")
-                } else
-                    console.log("canplay")
-            })
-
-            player.on('volumechange', (e) => {
-                wr.setAttribute("muted", player.muted());
-            });
-            player.on('play', (e) => {
-                wr.setAttribute("muted", player.muted());
-            });
-            player.on("pause", () => {
-                player.muted(false)
-            })
+                });
+                player.on('play', (e) => {
+                    wr.setAttribute("muted", player.muted());
+                });
+                player.on("pause", () => {
+                    player.muted(false)
+                })
+            }
             document.querySelector(".langWr").onclick = (e) => {
                 e.preventDefault()
                 e.stopPropagation();
