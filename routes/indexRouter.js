@@ -29,7 +29,7 @@ router.get('/setState/:id', function(req, res, next) {
     if(i.id==req.params.id) {
       state.state = i.id;
       await fs.writeFile(__dirname+"/../public/gosa2023/state.json", JSON.stringify(state))
-
+      res.json(require("./../public/gosa2023/state.json"))
     }
   })
 
