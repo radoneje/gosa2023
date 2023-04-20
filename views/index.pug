@@ -103,7 +103,7 @@ html(lang="ru")
             };
             let video = document.querySelector("video");
             video.setAttribute("poster", "/gosa2023/" + lang + "/poster.png")
-            if(mobileAndTabletCheck()){
+            if(mobileAndTabletCheck() && false){
                 //alert(1)
 
 
@@ -116,7 +116,7 @@ html(lang="ru")
             let player = videojs('video');
             let wr = document.querySelector(".videoWrapper")
             let fires=true
-            if(!mobileAndTabletCheck()) {
+           // if(!mobileAndTabletCheck()) {
                 player.on("ready", () => {
                     if (fires) {
                         fires = false;
@@ -139,7 +139,7 @@ html(lang="ru")
                 player.on("pause", () => {
                     player.muted(false)
                 })
-            }
+           // }
             document.querySelector(".langWr").onclick = (e) => {
                 e.preventDefault()
                 e.stopPropagation();
