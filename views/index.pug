@@ -96,7 +96,9 @@ html(lang="ru")
             let state = null;
             let player = videojs('video');
             let wr = document.querySelector(".videoWrapper")
-
+            player.once("canplay",()=>{
+                consolw.log("canplay")
+            })
             player.on('volumechange', (e) => {
                 wr.setAttribute("muted", player.muted());
             });
