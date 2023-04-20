@@ -103,7 +103,7 @@ html(lang="ru")
             };
             let video = document.querySelector("video");
             video.setAttribute("poster", "/gosa2023/" + lang + "/poster.png")
-            if(mobileAndTabletCheck() && false){
+            if(mobileAndTabletCheck()){
                 //alert(1)
 
 
@@ -116,7 +116,7 @@ html(lang="ru")
             let player = videojs('video');
             let wr = document.querySelector(".videoWrapper")
             let fires=true
-            if(true)
+            if(!mobileAndTabletCheck())
             {
                 player.on("ready", () => {
                     if (fires) {
