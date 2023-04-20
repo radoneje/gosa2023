@@ -81,7 +81,7 @@ html(lang="ru")
         script(src="/gosa2023/video.min.js")
     body
         .videoWrapper(muted="false")
-            video( id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause vjs-poster" playsinline width="1200" height="720" controls muted loop autoplay)
+            video( id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause vjs-poster" playsinline width="1200" height="720" controls loop )
             .muteWr()
                 include 172512_mute_icon.svg
             .langWr
@@ -96,7 +96,14 @@ html(lang="ru")
             let state = null;
             let player = videojs('video');
             let wr = document.querySelector(".videoWrapper")
+            let fires=true
             player.on("canplay",()=>{
+                if(fires){
+                    fires=true;
+                    player.muted(true);
+                    player.play();
+                    wr.setAttribute("muted", player.muted());
+                }
                 consolw.log("canplay")
             })
             player.on('volumechange', (e) => {
