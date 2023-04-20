@@ -116,7 +116,8 @@ html(lang="ru")
             let player = videojs('video');
             let wr = document.querySelector(".videoWrapper")
             let fires=true
-           // if(!mobileAndTabletCheck()) {
+            if(true)
+            {
                 player.on("ready", () => {
                     if (fires) {
                         fires = false;
@@ -139,7 +140,7 @@ html(lang="ru")
                 player.on("pause", () => {
                     player.muted(false)
                 })
-           // }
+             }
             document.querySelector(".langWr").onclick = (e) => {
                 e.preventDefault()
                 e.stopPropagation();
