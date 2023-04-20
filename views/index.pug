@@ -117,7 +117,7 @@ html(lang="ru")
             let wr = document.querySelector(".videoWrapper")
             let fires=true
             if(!mobileAndTabletCheck()) {
-                player.on("canplay", () => {
+                player.on("ready", () => {
                     if (fires) {
                         fires = false;
                         player.muted(true);
