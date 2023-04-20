@@ -96,7 +96,7 @@ html(lang="ru")
             let state = null;
             let player = videojs('video');
             let wr = document.querySelector(".videoWrapper")
-            player.once("canplay",()=>{
+            player.on("canplay",()=>{
                 consolw.log("canplay")
             })
             player.on('volumechange', (e) => {
