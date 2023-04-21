@@ -1,10 +1,10 @@
 {
-  "state": "poster",
+  "state": "cdnvideo",
   "items": [
     {
       "id": "poster",
       "ru": {
-        "src": "https://static.sber.link/gosa2023/ru/index.m3u8",
+        "src": "https://hls-fabrikanews-fl.cdnvideo.ru/fabrikanews4/1ru/playlist.m3u8",
         "poster": "/gosa2023/ru/poster.png"
       },
       "en": {
@@ -15,7 +15,7 @@
     {
       "id": "cdnvideo",
       "ru": {
-        "src": "https://static.sber.link/gosa2023/ru/itog.mp4",
+        "src": "https://hls-fabrikanews-fl.cdnvideo.ru/fabrikanews4/1ru/playlist.m3u8",
         "poster": "/gosa2023/ru/poster.png"
       },
       "en": {
