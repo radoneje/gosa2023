@@ -1,25 +1,25 @@
 {
-  "state": "cdnvideo",
+  "state": "poster",
   "items": [
     {
       "id": "poster",
       "ru": {
-        "src": "/gosa2023/ru/index.m3u8",
+        "src": "https://static.sber.link/gosa2023/ru/index.m3u8",
         "poster": "/gosa2023/ru/poster.png"
       },
       "en": {
-        "src": "/gosa2023/en/index.m3u8",
+        "src": "https://hls-fabrikanews-fl.cdnvideo.ru/fabrikanews4/1en/playlist.m3u8",
         "poster": "/gosa2023/en/poster.png"
       }
     },
     {
       "id": "cdnvideo",
       "ru": {
-        "src": "https://static.sber.link/gosa2023/ru/index.m3u8",
+        "src": "https://static.sber.link/gosa2023/ru/itog.mp4",
         "poster": "/gosa2023/ru/poster.png"
       },
       "en": {
-        "src": "https://static.sber.link/gosa2023/en/itog.mp4",
+        "src": "https://hls-fabrikanews-fl.cdnvideo.ru/fabrikanews4/1en/playlist.m3u8",
         "poster": "/gosa2023/en/poster.png"
       }
     },
