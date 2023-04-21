@@ -165,8 +165,9 @@ html(lang="ru")
                 e.preventDefault()
                 e.stopPropagation();
                 lang = lang == "ru" ? "en" : "ru";
-                updateState(true);
-                document.querySelector(".lang").innerHTML=(lang == "ru" ? "RUS" : "ENG");
+                document.location.href="/gosa2023/player/"+lang
+                //updateState(true);
+                //document.querySelector(".lang").innerHTML=(lang == "ru" ? "RUS" : "ENG");
             }
 
             wr.onclick = (e) => {
