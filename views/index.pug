@@ -82,13 +82,33 @@ html(lang="ru")
             }
         link( href="/gosa2023/video-js.css" rel="stylesheet")
         script(src="/gosa2023/video.min.js")
+
+
+        <!-- Yandex.Metrika counter -->
+        script.
+            (function(m,e,t,r,i,k,a){m[i]=m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+                m[i].l=1 * new Date();
+                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                k=e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            ym(39750765, "init", {
+            clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true
+                });
+
+        <noscript><div><img src="https://mc.yandex.ru/watch/39750765" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
     body
         .videoWrapper(muted="true")
             video( id="video" class="video video-js vjs-big-play-button vjs-big-play-centered vjs-show-big-play-button-on-pause vjs-poster" playsinline width="1200" height="720" loop preload="auto" )
             .muteWr()
                 include 172512_mute_icon.svg
             .langWr
-                if lang == "en"
+                if lang == "ru"
                     .lang RUS
                 else
                     .lang ENG
@@ -144,7 +164,7 @@ html(lang="ru")
             document.querySelector(".langWr").onclick = (e) => {
                 e.preventDefault()
                 e.stopPropagation();
-                lang = lang == "ru" ? "en" : "ru";
+                lang = lang == "ru" ? "ru" : "en";
                 updateState(true);
                 document.querySelector(".lang").innerHTML=(lang == "ru" ? "ENG" : "RUS");
             }
