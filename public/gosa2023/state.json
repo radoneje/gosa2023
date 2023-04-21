@@ -8,7 +8,7 @@
         "poster": "/gosa2023/ru/poster.png"
       },
       "en": {
-        "src": "https://hls-fabrikanews-fl.cdnvideo.ru/fabrikanews4/1en/playlist.m3u8",
+        "src": "https://gosa2020orig.sber.link/gosa2023/en/itog/index.m3u8",
         "poster": "/gosa2023/en/poster.png"
       }
     },
@@ -19,7 +19,7 @@
         "poster": "/gosa2023/ru/poster.png"
       },
       "en": {
-        "src": "https://hls-fabrikanews-fl.cdnvideo.ru/fabrikanews4/1en/playlist.m3u8",
+        "src": "https://gosa2020orig.sber.link/gosa2023/en/itog/index.m3u8",
         "poster": "/gosa2023/en/poster.png"
       }
     },
