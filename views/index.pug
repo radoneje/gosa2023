@@ -164,9 +164,9 @@ html(lang="ru")
             document.querySelector(".langWr").onclick = (e) => {
                 e.preventDefault()
                 e.stopPropagation();
-                lang = lang == "ru" ? "ru" : "en";
+                lang = lang == "ru" ? "en" : "ru";
                 updateState(true);
-                document.querySelector(".lang").innerHTML=(lang == "ru" ? "ENG" : "RUS");
+                document.querySelector(".lang").innerHTML=(lang == "ru" ? "RUS" : "ENG");
             }
 
             wr.onclick = (e) => {
