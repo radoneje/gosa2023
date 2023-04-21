@@ -189,7 +189,7 @@ html(lang="ru")
                             dt.items.forEach(item => {
                                 if (item.id == state) {
 
-                                    player.src(item[lang].src, item[lang].src.match(/mp4/)? "video/mp4": "application/vnd.apple.mpegurl");
+                                    player.src(item[lang].src, "application/vnd.apple.mpegurl");
                                     let poster = item[lang].poster;
                                     player.poster_ = item[lang].poster;
                                     setTimeout(() => {

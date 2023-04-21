@@ -15,7 +15,7 @@
     {
       "id": "cdnvideo",
       "ru": {
-        "src": "https://hls-fabrikanews-fl.cdnvideo.ru/fabrikanews4/1ru/playlist.m3u8",
+        "src": "https://static.sber.link/gosa2023/ru/index.m3u8",
         "poster": "/gosa2023/ru/poster.png"
       },
       "en": {
